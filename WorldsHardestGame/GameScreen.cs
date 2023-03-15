@@ -17,7 +17,7 @@ namespace WorldsHardestGame
 
         SolidBrush greenBrush = new SolidBrush (Color.Green);
         SolidBrush blackBrush = new SolidBrush(Color.Black);
-        SolidBrush grayBrush = new SolidBrush(Color.Gray);
+        SolidBrush whiteBrush = new SolidBrush(Color.White);
 
 
         //used in grid creation
@@ -81,7 +81,7 @@ namespace WorldsHardestGame
                 {
                     if (i % 2 == 0)
                     {
-                        e.Graphics.FillRectangle(grayBrush, gridBackArea[i-1].X, gridBackArea[i-1].Y, gridSize, gridSize);
+                        e.Graphics.FillRectangle(whiteBrush, gridBackArea[i-1].X, gridBackArea[i-1].Y, gridSize, gridSize);
                     }
                     else
                     {
@@ -96,7 +96,7 @@ namespace WorldsHardestGame
                     }
                     else
                     {
-                        e.Graphics.FillRectangle(grayBrush, gridBackArea[i-1].X, gridBackArea[i-1].Y, gridSize, gridSize);
+                        e.Graphics.FillRectangle(whiteBrush, gridBackArea[i-1].X, gridBackArea[i-1].Y, gridSize, gridSize);
                     }
                 }
             }
