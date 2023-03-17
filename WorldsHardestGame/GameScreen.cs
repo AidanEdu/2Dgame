@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,14 @@ namespace WorldsHardestGame
     {
         public List<Rectangle> backArea = new List <Rectangle>();
         List<Point> gridBackArea = new List<Point>(); 
+        List<Enemy> Enemy = new List<Enemy>();
 
         SolidBrush greenBrush = new SolidBrush (Color.Green);
         SolidBrush blackBrush = new SolidBrush(Color.Black);
         SolidBrush whiteBrush = new SolidBrush(Color.White);
 
-
+        public Rectangle bigRec = new Rectangle(160, 100, 480, 300); 
         //used in grid creation
-        int t;
         int gridSize = 60; 
 
         public GameScreen()
@@ -33,7 +34,7 @@ namespace WorldsHardestGame
             //creates the rectangle the player can freely move on
             backArea.Add(new Rectangle(60, 190, 60, 120));
             backArea.Add(new Rectangle(120, 310 - 40, 40, 40));
-            backArea.Add(new Rectangle(160, 100, 480, 300));
+            backArea.Add(bigRec);
             backArea.Add(new Rectangle(640, 250 - 20, 40, 40));
             backArea.Add(new Rectangle(680, 190, 60, 120));
 
@@ -55,6 +56,31 @@ namespace WorldsHardestGame
             }
             #endregion
 
+            #region enemySpawn
+
+            int tempSpeed = 1;
+            tempX = 0;
+            
+            for (int i = 0; i <= 7; i++)
+            {
+                if (tempSpeed > 0)
+                {
+                    Enemy.Add(new Enemy(bigRec.Width / 2 + bigRec.Location.X + tempX, bigRec.Height, tempSpeed));
+                }
+                else
+                {
+                    Enemy.Add(new Enemy(bigRec.Width / 2 + bigRec.Location.X + tempX, bigRec.Height, tempSpeed));
+                }
+                tempSpeed *= 1; 
+                if (i/2 == 1)
+                {
+                    tempX += bigRec.Width / 8;
+                }
+
+            }
+
+
+            #endregion
         }
 
 
