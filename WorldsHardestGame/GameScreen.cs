@@ -15,7 +15,7 @@ namespace WorldsHardestGame
     {
         public List<Rectangle> backArea = new List <Rectangle>();
         List<Point> gridBackArea = new List<Point>(); 
-        List<Enemy> Enemy = new List<Enemy>();
+        List<Enemy> enemies = new List<Enemy>();
 
         SolidBrush greenBrush = new SolidBrush (Color.Green);
         SolidBrush blackBrush = new SolidBrush(Color.Black);
@@ -56,31 +56,8 @@ namespace WorldsHardestGame
             }
             #endregion
 
-            #region enemySpawn
-
-            int tempSpeed = 1;
-            tempX = 0;
-            
-            for (int i = 0; i <= 7; i++)
-            {
-                if (tempSpeed > 0)
-                {
-                    Enemy.Add(new Enemy(bigRec.Width / 2 + bigRec.Location.X + tempX, bigRec.Height, tempSpeed));
-                }
-                else
-                {
-                    Enemy.Add(new Enemy(bigRec.Width / 2 + bigRec.Location.X + tempX, bigRec.Height, tempSpeed));
-                }
-                tempSpeed *= 1; 
-                if (i/2 == 1)
-                {
-                    tempX += bigRec.Width / 8;
-                }
-
-            }
-
-
-            #endregion
+            Enemy newEnemy = new Enemy((bigRec.Width / 2 - 20) + bigRec.X, bigRec.Y, 40, 6);
+            enemies.Add(newEnemy);
         }
 
 
@@ -127,6 +104,11 @@ namespace WorldsHardestGame
                 }
             }
             #endregion
+
+           foreach (Enemy enemy in enemies)
+            {
+                e.Graphics.FillEllipse(greenBrush, enemy.x, enemy.y, enemy.size, enemy.size); 
+            }
         }
     }
 }

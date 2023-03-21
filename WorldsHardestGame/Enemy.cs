@@ -10,27 +10,28 @@ namespace WorldsHardestGame
 {
     internal class Enemy
     {
-        int x, y, speed;
+        int x, y, speed, size;
 
-        public Enemy (int _x, int _y, int _speed)
+        public Enemy (int _x, int _y,int _size,int _speed)
         {
             x = _x;
-            y = _y; 
+            y = _y;
+            size = _size; 
             speed = _speed;
         }
 
-        void move (int y, Rectangle p)
+        public void Move(Rectangle r)
         {
-            if (y > p.Location.Y && y < p.Height)
+            Rectangle enemy = new Rectangle(x, y, size, size);
+            
+            if (r.IntersectsWith(enemy))
             {
-                y += speed; 
+                x += speed;
             }
             else
             {
-                speed *= -1;
-                y += speed; 
+                x += (speed *= -1); 
             }
         }
-        
     }
 }
