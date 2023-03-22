@@ -56,14 +56,50 @@ namespace WorldsHardestGame
             }
             #endregion
 
-            Enemy newEnemy = new Enemy((bigRec.Width / 2 - 20) + bigRec.X, bigRec.Y, 40, 6);
-            enemies.Add(newEnemy);
+
+            #region enemyCreation
+
+            for (int i = 0; i <= 7; i++)
+            {
+                //alternates up and down
+                int add; 
+                if (i % 2 == 0)
+                {
+                    add = bigRec.Height; 
+                }
+                else
+                {
+                    add = 0;
+                }
+                //creates 8 enemies
+                Enemy newEnemy = new Enemy((bigRec.Width / 8)*i + bigRec.X + 10, bigRec.Y + add, 40, 6);
+                enemies.Add(newEnemy);
+            }
+            #endregion
+
+
+
+
         }
 
 
         private void gameEngine_Tick(object sender, EventArgs e)
         {
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.Move(bigRec);
+                Rectangle enemyCheck = new Rectangle(enemy.x, enemy.y, enemy.size, enemy.size);
+                if (bigRec.IntersectsWith(enemyCheck))
+                {
+                    checkLabel.Text = $"true";
+                }
+                else
+                {
+                    checkLabel.Text = $"false";
+                }
+            }
 
+            Refresh();
         }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
