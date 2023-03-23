@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing; 
 
 namespace WorldsHardestGame
 {
@@ -17,9 +18,40 @@ namespace WorldsHardestGame
             speed = _speed;
         }
 
-        public void Move()
+        public void Move(string direction, List<Rectangle> r)
         {
-           
+            bool contatains = false;
+            
+            Rectangle playerRectangle = new Rectangle(x, y, size, size);
+
+            foreach (Rectangle rect in r)
+            {
+                if (rect.Contains(playerRectangle) || )
+                {
+                    contatains = true;
+                }
+            }
+
+
+            
+            if (direction == "up" && contatains == true)
+            {
+                y -= speed;
+            }
+            if (direction == "down" && contatains == true)
+            {
+                y += speed;
+            }
+            if (direction == "right" && contatains == true)
+            {
+                x += speed;
+            }
+            if (direction == "left" && contatains == true)
+            {
+                x -= speed;
+            }
+
+            
         }
     }
 }
