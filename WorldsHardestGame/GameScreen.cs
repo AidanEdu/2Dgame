@@ -82,7 +82,7 @@ namespace WorldsHardestGame
             }
             #endregion
 
-            playerOne = new Player(backArea[0].X + backArea[0].Width / 2 - 15, backArea[0].Y, 10, 3, 3);
+            playerOne = new Player(backArea[0].X + backArea[0].Width / 2 - 15, backArea[0].Y, 20, 3, 3);
 
 
         }

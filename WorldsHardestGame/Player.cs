@@ -272,8 +272,8 @@ namespace WorldsHardestGame
 
             foreach (Enemy enemy in e)
             {
-                allowedRadius = enemy.size + size;
-                actuallRadius = Math.Sqrt(Math.Pow((enemy.x + enemy.size / 2) - (x + size / 2) , 2) + Math.Pow((enemy.y + enemy.size / 2) - (y + size /2), 2));
+                allowedRadius = enemy.size /2+ size/2;
+                actuallRadius = Math.Sqrt(Math.Pow((enemy.x + enemy.size/2) - (x + size/2) , 2) + Math.Pow((enemy.y + enemy.size/2) - (y + size/2), 2));
 
                 if (actuallRadius < allowedRadius)
                 {
