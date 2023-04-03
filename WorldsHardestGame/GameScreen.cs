@@ -23,8 +23,10 @@ namespace WorldsHardestGame
         SolidBrush redBrush = new SolidBrush(Color.Red);
 
         public Rectangle bigRec = new Rectangle(160, 100, 480, 300);
+        public Rectangle firstRec = new Rectangle(60, 190, 60, 120);
         Player playerOne;
 
+        
         //used in grid creation
         int gridSize = 60;
 
@@ -36,7 +38,7 @@ namespace WorldsHardestGame
             #region backgroundRectangleInitialization 
 
             //creates the rectangle the player can freely move on
-            backArea.Add(new Rectangle(60, 190, 60, 120));
+            backArea.Add(firstRec);
             backArea.Add(new Rectangle(120, 310 - 40, 40, 40));
             backArea.Add(bigRec);
             backArea.Add(new Rectangle(640, 250 - 20, 40, 40));
@@ -80,7 +82,7 @@ namespace WorldsHardestGame
             }
             #endregion
 
-            playerOne = new Player(backArea[0].X + backArea[0].Width / 2 - 15, backArea[0].Y, 20, 6);
+            playerOne = new Player(backArea[0].X + backArea[0].Width / 2 - 15, backArea[0].Y, 10, 3, 3);
 
 
         }
@@ -88,10 +90,14 @@ namespace WorldsHardestGame
 
         private void gameEngine_Tick(object sender, EventArgs e)
         {
+
+            containsLabel.Text = $"x: {playerOne.x} \ny: {playerOne.y}";
+
             //moves enemys and changes their y speed if needed
             foreach (Enemy enemy in enemies)
             {
                 enemy.Move(bigRec);
+               
             }
 
             if (upArrowDown == true)
@@ -110,7 +116,13 @@ namespace WorldsHardestGame
             {
                 playerOne.Move("left", backArea);
             }
+
+            playerOne.collision(enemies, firstRec); 
+
+
             Refresh();
+
+            
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
