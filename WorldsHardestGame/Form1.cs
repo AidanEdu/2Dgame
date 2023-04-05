@@ -34,10 +34,10 @@ namespace WorldsHardestGame
                 f = current.FindForm();                     //find Form UserControl is on
                 f.Controls.Remove(current);                 //remove current UserControl
             }
-
             // add the new UserControl to the middle of the screen and focus on it
+
             next.Location = new Point((f.ClientSize.Width - next.Width) / 2,
-                (f.ClientSize.Height - next.Height) / 2);
+               (f.ClientSize.Height - next.Height) / 2);
             f.Controls.Add(next);
             next.Focus();
         }

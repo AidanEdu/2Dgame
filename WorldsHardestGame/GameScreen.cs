@@ -90,6 +90,11 @@ namespace WorldsHardestGame
 
         private void gameEngine_Tick(object sender, EventArgs e)
         {
+            if (playerOne.lives == 0)
+            {
+                Form1.ChangeScreen(this, new EndScreen());
+                gameEngine.Stop();
+            }
 
             containsLabel.Text = $"x: {playerOne.x} \ny: {playerOne.y}";
 
