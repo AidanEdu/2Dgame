@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics; 
 
 namespace WorldsHardestGame
 {
@@ -34,6 +35,8 @@ namespace WorldsHardestGame
         public GameScreen()
         {
             InitializeComponent();
+
+            gameEngine.Start(); 
 
             #region backgroundRectangleInitialization 
 
@@ -90,21 +93,50 @@ namespace WorldsHardestGame
 
         private void gameEngine_Tick(object sender, EventArgs e)
         {
+
+
+            //if the player dies
             if (playerOne.lives == 0)
             {
-                Form1.ChangeScreen(this, new EndScreen());
+                //stops and resets the timer
+                Form1.timer.Stop();
+                Form1.timer.Reset(); 
+                
+                //changes the screen
+                Form1.ChangeScreen(this, new MenuScreen());
                 gameEngine.Stop();
             }
 
-            containsLabel.Text = $"x: {playerOne.x} \ny: {playerOne.y}";
+            //checks if player wins
+
+            if (playerOne.x >= 670)
+            {
+                //calculates score
+                Form1.score = Convert.ToInt32(Form1.timer.ElapsedMilliseconds / 1000 * 50 - playerOne.lives * 1000);
+
+                //stops and resets the timer
+                Form1.timer.Stop();
+                Form1.timer.Reset();
+
+                //changes the screen
+                Form1.ChangeScreen(this, new MenuScreen());
+                gameEngine.Stop();
+            }
+
+            //Displays the players lives to the screen
+            livesLabel.Text = $"Lives: {playerOne.lives}";
+
+            //Displays the current play time
+            timerLabel.Text = $"Time: {Form1.timer.ElapsedMilliseconds/1000}s";
+
 
             //moves enemys and changes their y speed if needed
             foreach (Enemy enemy in enemies)
             {
                 enemy.Move(bigRec);
-               
             }
 
+            //checks if the controls are being used
             if (upArrowDown == true)
             {
                 playerOne.Move("up", backArea);
@@ -122,12 +154,10 @@ namespace WorldsHardestGame
                 playerOne.Move("left", backArea);
             }
 
+            //calls the collision within the player class
             playerOne.collision(enemies, firstRec); 
 
-
             Refresh();
-
-            
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -146,7 +176,6 @@ namespace WorldsHardestGame
                 case Keys.Down:
                     downArrowDown = true;
                     break;
-
             }
         }
 
@@ -171,7 +200,6 @@ namespace WorldsHardestGame
                 case Keys.Down:
                     downArrowDown = false;
                     break;
-
             }
         }
         private void GameScreen_Paint(object sender, PaintEventArgs e)
@@ -213,12 +241,13 @@ namespace WorldsHardestGame
             }
             #endregion
 
+            //paints enemys
             foreach (Enemy enemy in enemies)
             {
                 e.Graphics.FillEllipse(greenBrush, enemy.x, enemy.y, enemy.size, enemy.size);
             }
 
-
+            //paints player one
             e.Graphics.FillEllipse(redBrush, playerOne.x, playerOne.y, playerOne.size, playerOne.size);
         }
     }

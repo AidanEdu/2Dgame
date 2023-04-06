@@ -29,31 +29,43 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.livesLabel = new System.Windows.Forms.Label();
+            this.timerLabel = new System.Windows.Forms.Label();
             this.gameEngine = new System.Windows.Forms.Timer(this.components);
-            this.containsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // livesLabel
+            // 
+            this.livesLabel.AutoSize = true;
+            this.livesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livesLabel.Location = new System.Drawing.Point(42, 32);
+            this.livesLabel.Name = "livesLabel";
+            this.livesLabel.Size = new System.Drawing.Size(58, 24);
+            this.livesLabel.TabIndex = 0;
+            this.livesLabel.Text = "Lives:";
+            // 
+            // timerLabel
+            // 
+            this.timerLabel.AutoSize = true;
+            this.timerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerLabel.Location = new System.Drawing.Point(42, 67);
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(58, 24);
+            this.timerLabel.TabIndex = 1;
+            this.timerLabel.Text = "Lives:";
             // 
             // gameEngine
             // 
-            this.gameEngine.Enabled = true;
             this.gameEngine.Interval = 20;
             this.gameEngine.Tick += new System.EventHandler(this.gameEngine_Tick);
-            // 
-            // containsLabel
-            // 
-            this.containsLabel.AutoSize = true;
-            this.containsLabel.Location = new System.Drawing.Point(587, 40);
-            this.containsLabel.Name = "containsLabel";
-            this.containsLabel.Size = new System.Drawing.Size(35, 13);
-            this.containsLabel.TabIndex = 0;
-            this.containsLabel.Text = "label1";
             // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Controls.Add(this.containsLabel);
+            this.Controls.Add(this.timerLabel);
+            this.Controls.Add(this.livesLabel);
             this.DoubleBuffered = true;
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(800, 500);
@@ -67,8 +79,8 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.Label livesLabel;
+        private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Timer gameEngine;
-        private System.Windows.Forms.Label containsLabel;
     }
 }

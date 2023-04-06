@@ -15,6 +15,52 @@ namespace WorldsHardestGame
         public MenuScreen()
         {
             InitializeComponent();
+            scoreInfoLabel.Visible = false; 
+            backLabel.Visible = false;
+            xLabel.Visible = false;
+            xLabel.Enabled = false;
+           
+
+            if (Form1.score != 0)
+            {
+                scoreLabel.Visible = true;
+                scoreLabel.Text = $"SCORE: {Form1.score}"; 
+            }
+            else
+            {
+                scoreLabel.Visible = false;
+            }
+
+            scoreInfoLabel.Text = $"LOWER SCORE IS BETTER\n1s = 50\n1 life = -1000"; 
+            
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            Form1.timer.Start();
+            Form1.ChangeScreen(this, new GameScreen());
+        }
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            Form f = this.FindForm();
+            f.Close();
+        }
+
+        private void scoreButtonLabel_Click(object sender, EventArgs e)
+        {
+            xLabel.Visible = true;
+            xLabel.Enabled = true;
+            scoreInfoLabel.Visible = true;
+            backLabel.Visible = true;
+        }
+
+        private void xLabel_Click_1(object sender, EventArgs e)
+        {
+            xLabel.Visible = false;
+            xLabel.Enabled = false;
+            scoreInfoLabel.Visible = false;
+            backLabel.Visible = false;
         }
     }
 }

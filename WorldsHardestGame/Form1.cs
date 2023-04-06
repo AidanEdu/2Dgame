@@ -7,17 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
+using System.Media;
 
 namespace WorldsHardestGame
 {
     public partial class Form1 : Form
     {
-       
+        public static Stopwatch timer = new Stopwatch();
+        public static int score;
+
+        public static string winningSound = "/Resources/winningSound.wav";
+        public static string pingSound = "/Resources/pingSound.wav";
+        public static string deathSound = "/Resources/VGDeathSound-highlight.wav";
+
 
         public Form1()
         {
             InitializeComponent();
-            ChangeScreen(this, new GameScreen());
+            ChangeScreen(this, new MenuScreen());
+            
         }
 
         public static void ChangeScreen(object sender, UserControl next)
@@ -40,6 +50,13 @@ namespace WorldsHardestGame
                (f.ClientSize.Height - next.Height) / 2);
             f.Controls.Add(next);
             next.Focus();
+        }
+
+        public static void playSound(string location)
+        {
+            var sound = new System.Windows.Media.MediaPlayer();
+            sound.Open(new Uri(Application.StartupPath + $"{location}"));
+            sound.Play();
         }
     }
 }
