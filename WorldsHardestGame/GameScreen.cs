@@ -85,6 +85,7 @@ namespace WorldsHardestGame
             }
             #endregion
 
+            //creates the player
             playerOne = new Player(backArea[0].X + backArea[0].Width / 2 - 15, backArea[0].Y, 20, 3, 3);
 
 
@@ -93,7 +94,6 @@ namespace WorldsHardestGame
 
         private void gameEngine_Tick(object sender, EventArgs e)
         {
-
 
             //if the player dies
             if (playerOne.lives == 0)
@@ -117,6 +117,9 @@ namespace WorldsHardestGame
                 //stops and resets the timer
                 Form1.timer.Stop();
                 Form1.timer.Reset();
+
+                //plays the victory sound
+                Form1.playSound(Form1.winningSound);
 
                 //changes the screen
                 Form1.ChangeScreen(this, new MenuScreen());

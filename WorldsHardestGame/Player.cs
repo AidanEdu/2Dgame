@@ -278,8 +278,13 @@ namespace WorldsHardestGame
                 //checks if the player and enemy collide
                 if (actuallRadius < allowedRadius)
                 {
+                    //updates player lives
                     lives--;
+
+                    //plays the death sound
                     Form1.playSound(Form1.deathSound);
+
+                    //resets players position 
                     x = r.X + r.Width / 2 - size / 2;
                     y = r.Y + r.Height / 2  - size / 2;
                 }

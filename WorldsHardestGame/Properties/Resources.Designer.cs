@@ -91,9 +91,27 @@ namespace WorldsHardestGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream VideoGameDeathSoundLoud {
+            get {
+                return ResourceManager.GetStream("VideoGameDeathSoundLoud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream winningSound {
             get {
                 return ResourceManager.GetStream("winningSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream winningSoundLoud {
+            get {
+                return ResourceManager.GetStream("winningSoundLoud", resourceCulture);
             }
         }
     }

@@ -38,17 +38,20 @@ namespace WorldsHardestGame
         private void playButton_Click(object sender, EventArgs e)
         {
             Form1.timer.Start();
+            Form1.playSound(Form1.pingSound);
             Form1.ChangeScreen(this, new GameScreen());
         }
 
         private void quitButton_Click(object sender, EventArgs e)
         {
+            Form1.playSound(Form1.pingSound);
             Form f = this.FindForm();
             f.Close();
         }
 
         private void scoreButtonLabel_Click(object sender, EventArgs e)
         {
+            Form1.playSound(Form1.pingSound);
             xLabel.Visible = true;
             xLabel.Enabled = true;
             scoreInfoLabel.Visible = true;
@@ -57,6 +60,7 @@ namespace WorldsHardestGame
 
         private void xLabel_Click_1(object sender, EventArgs e)
         {
+            Form1.playSound(Form1.pingSound);
             xLabel.Visible = false;
             xLabel.Enabled = false;
             scoreInfoLabel.Visible = false;

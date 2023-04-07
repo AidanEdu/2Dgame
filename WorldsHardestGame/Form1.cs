@@ -18,9 +18,9 @@ namespace WorldsHardestGame
         public static Stopwatch timer = new Stopwatch();
         public static int score;
 
-        public static string winningSound = "/Resources/winningSound.wav";
+        public static string winningSound = "/Resources/winningSoundLoud.wav";
         public static string pingSound = "/Resources/pingSound.wav";
-        public static string deathSound = "/Resources/VGDeathSound-highlight.wav";
+        public static string deathSound = "/Resources/VideoGameDeathSoundLoud.wav";
 
 
         public Form1()
